@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		    <meta charset="UTF-8">
+		        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			    <title>Developer Dashboard</title>
+			        <style>
+        :root {
+		            --bg-primary: #0f172a;
+			                --bg-secondary: #1e293b;
+					            --accent: #38bdf8;
+						                --text-main: #f8fafc;
+								            --text-muted: #94a3b8;
+									                --border: #334155;
+											            --success: #4ade80;
+												            }
+
+	        * {
+			            box-sizing: border-box;
+				                margin: 0;
+						            padding: 0;
+							                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+									        }
+
+		        body {
+				            background-color: var(--bg-primary);
+					                color: var(--text-main);
+							            display: flex;
+								                min-height: 100vh;
+										        }
+
+			        /* Sidebar Navigation */
+			        aside {
+					            width: 240px;
+						                background-color: var(--bg-secondary);
+								            border-right: 1px solid var(--border);
+									                padding: 2rem 1rem;
+											            display: flex;
+												                flex-direction: column;
+														            gap: 2rem;
+															            }
+
+				        .logo {
+						            font-size: 1.25rem;
+							                font-weight: bold;
+									            color: var(--accent);
+										                letter-spacing: 1px;
+												        }
+
+					        .nav-links {
+							            list-style: none;
+								                display: flex;
+										            flex-direction: column;
+											                gap: 0.5rem;
+													        }
+
+						        .nav-links a {
+								            color: var(--text-muted);
+									                text-decoration: none;
+											            padding: 0.75rem 1rem;
+												                border-radius: 0.375rem;
+														            display: block;
+															                transition: all 0.2s;
+																	        }
+
+							        .nav-links a:hover, .nav-links .active {
+									            background-color: var(--border);
+										                color: var(--text-main);
+												        }
+
+								        /* Main Content Area */
+								        main {
+										            flex-1: 1;
+											                width: calc(100% - 240px);
+													            padding: 2rem;
+														            }
+
+									        header {
+											            margin-bottom: 2rem;
+												            }
+
+										        header h1 {
+												            font-size: 1.75rem;
+													                margin-bottom: 0.25rem;
+															        }
+
+											        header p {
+													            color: var(--text-muted);
+														            }
+
+												        /* Stats Grid */
+												        .stats-grid {
+														            display: grid;
+															                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+																	            gap: 1.5rem;
+																		                margin-bottom: 2.5rem;
+																				        }
+
+													        .card {
+															            background-color: var(--bg-secondary);
+																                border: 1px solid var(--border);
+																		            padding: 1.5rem;
+																			                border-radius: 0.5rem;
+																					        }
+
+														        .card h3 {
+																            font-size: 0.875rem;
+																	                color: var(--text-muted);
+																			            text-transform: uppercase;
+																				                margin-bottom: 0.5rem;
+																						        }
+
+															        .card .value {
+																	            font-size: 1.75rem;
+																		                font-weight: bold;
+																				        }
+
+																        /* Data Table */
+																        .section-title {
+																		            font-size: 1.25rem;
+																			                margin-bottom: 1rem;
+																					        }
+
+																	        .table-container {
+																			            background-color: var(--bg-secondary);
+																				                border: 1px solid var(--border);
+																						            border-radius: 0.5rem;
+																							                overflow: hidden;
+																									        }
+
+																		        table {
+																				            width: 100%;
+																					                border-collapse: collapse;
+																							            text-align: left;
+																								            }
+
+																			        th, td {
+																					            padding: 1rem;
+																						                border-bottom: 1px solid var(--border);
+																								        }
+
+																				        th {
+																						            background-color: rgba(0, 0, 0, 0.1);
+																							                color: var(--text-muted);
+																									            font-size: 0.875rem;
+																										            }
+
+																					        tr:last-child td {
+																							            border-bottom: none;
+																								            }
+
+																						        .status-badge {
+																								            background-color: rgba(74, 222, 128, 0.1);
+																									                color: var(--success);
+																											            padding: 0.25rem 0.5rem;
+																												                border-radius: 0.25rem;
+																														            font-size: 0.75rem;
+																															            }
+																							    </style>
+	</head>
+	<body>
+
+		    <!-- Sidebar Navigation -->
+		        <aside>
+				        <div class="logo">&lt;DEVBOARD /&gt;</div>
+					        <ul class="nav-links">
+							            <li><a href="#" class="active">Overview</a></li>
+								                <li><a href="#">Repositories</a></li>
+										            <li><a href="#">Deployments</a></li>
+											                <li><a href="#">Analytics</a></li>
+													            <li><a href="#">Settings</a></li>
+														            </ul>
+															        </aside>
+
+																    <!-- Main Content -->
+																        <main>
+																		        <header>
+																				            <h1>Welcome back, Dev</h1>
+																					                <p>Here is your engineering metrics overview for today.</p>
+																							        </header>
+
+																								        <!-- Stats Grid -->
+																									        <section class="stats-grid">
+																											            <div class="card">
+																													                    <h3>Active Sprint Tasks</h3>
+																															                    <div class="value">12</div>
+																																	                </div>
+																																			            <div class="card">
+																																					                    <h3>Open Pull Requests</h3>
+																																							                    <div class="value">4</div>
+																																									                </div>
+																																											            <div class="card">
+																																													                    <h3>Production Uptime</h3>
+																																															                    <div class="value" style="color: var(--success);">99.98%</div>
+																																																	                </div>
+																																																			            <div class="card">
+																																																					                    <h3>API Requests (24h)</h3>
+																																																							                    <div class="value">142.5K</div>
+																																																									                </div>
+																																																											        </section>
+
+																																																												        <!-- Projects Table -->
+																																																													        <section>
+																																																															            <h2 class="section-title">Active Deployments</h2>
+																																																																                <div class="table-container">
+																																																																			                <table>
+																																																																						                    <thead>
+																																																																									                            <tr>
+																																																																													                                <th>Repository</th>
+																																																																																	                            <th>Branch</th>
+																																																																																				                                <th>Commit</th>
+																																																																																								           
+																																																																						                    <thead>
+																																																																									                            <tr>
+																																																																													                                <th>Repository</th>
+																																																																																	                            <th>Branch</th>
+																																																																																				                                <th>Commit</th>
+																																																																																								                            <th>Status</th>
+																																																																																											                            </tr>
+																																																																																														                        </thead>
+																																																																																																	                    <tbody>
+																																																																																																				                            <tr>
+																																																																																																								                                <td>api-gateway</td>
+																																																																																																												                            <td>main</td>
+																				
+
