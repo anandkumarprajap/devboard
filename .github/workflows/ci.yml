@@ -24,7 +24,14 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-                # - name: Setup Node.js
+      - name: Docker Build and Push
+        uses: docker/build-push-action@v7
+        with:
+          push: true
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/devboard-fe-fix/lint:latest
+
+
+                          # - name: Setup Node.js
       #   uses: actions/setup-node@v4
       #   with:
       #     node-version: 20
@@ -35,9 +42,3 @@ jobs:
 
       # - name: Run Lint (Biome)
       #   run: npm run lint
-
-  #     - name: Docker Build and Push
-  #       uses: docker/build-push-action@v7
-  #       with:
-  #         push: true
-  #         tags: ${{ vars.DOCKERHUB_USERNAME }}/devboard-fe-master:latest
