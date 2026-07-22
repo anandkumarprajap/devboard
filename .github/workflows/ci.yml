@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: anandkumarprajap/devboard-fe-fix/lint:latest
+          tags: ghcr.io/anandkumarprajap/devboard-fe-fix/lint:latest
 
 
                           # - name: Setup Node.js
