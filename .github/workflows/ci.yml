@@ -6,11 +6,23 @@ on:
     branches: [fix/lint]
 
 jobs:
-  code:
+  code-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm" # Automates dependency caching for faster builds
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Lint (Biome)
+        run: npm run lint
 
   build-and-push:
     runs-on: ubuntu-latest
@@ -28,17 +40,4 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: ghcr.io/anandkumarprajap/devboard-fe-fix/lint:latest
-
-
-                          # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 20
-      #     cache: "npm" # Automates dependency caching for faster builds
-
-      # - name: Install Dependencies
-      #   run: npm install
-
-      # - name: Run Lint (Biome)
-      #   run: npm run lint
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/devboard-fe-master:latest
